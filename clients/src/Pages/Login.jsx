@@ -1,24 +1,23 @@
-import React , {useContext} from 'react'
+import React, { useContext } from 'react'
 import Banner from '../Components/Banner'
 import Context from '../Context/Context';
 
-import {Stack , Button , FormControl , TextField , InputAdornment} from "@mui/material";
+import { Stack, Button, FormControl, TextField, InputAdornment } from "@mui/material";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom"
 const Login = () => {
 
   const context = useContext(Context);
-  const {typedIn , setTypedIn} = context;
+  const { typedIn, setTypedIn } = context;
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     document.title = 'e-DAM | Login';
-  },[])
+  }, [])
 
   return (
     <div className='w-[100%] h-[100%] flex flex-row items-start justify-center'>
@@ -37,12 +36,12 @@ const Login = () => {
 
         {/* Sign Up With Google and Twitter */}
         <Stack width={'100%'} direction={{ xs: "column", sm: "row" }} spacing={{ xs: 2, sm: 4 }} >
-          <Button fullWidth variant="outlined" startIcon={<FcGoogle className="w-8 h-8" />} sx={{ textTransform: "none", color: "#252525", borderColor: "#E6E6E6", padding: "12px 16px", fontSize: {md:"14px",sm:'12px',xs:'16px'}, "&:hover": { borderColor: "#252525" , backgroundColor:'transparent' , scale:"1.04" }}} disableElevation={true} disableFocusRipple={true}>
-          Sign In With Google
+          <Button fullWidth variant="outlined" startIcon={<FcGoogle className="w-8 h-8" />} sx={{ textTransform: "none", color: "#252525", borderColor: "#E6E6E6", padding: "12px 16px", fontSize: { md: "14px", sm: '12px', xs: '16px' }, "&:hover": { borderColor: "#252525", backgroundColor: 'transparent', scale: "1.04" } }} disableElevation={true} disableFocusRipple={true}>
+            Sign In With Google
           </Button>
 
-          <Button fullWidth variant="outlined" startIcon={<BsGithub className="w-8 h-8 text-[#232323]" />} sx={{ textTransform: "none", color: "#252525", borderColor: "#E6E6E6", padding: "12px 16px", fontSize: {md:"14px",sm:'12px',xs:'16px'}, "&:hover": { borderColor: "#252525" , backgroundColor:"transparent" , scale:"1.04" } }} disableElevation={true} disableFocusRipple={true}>
-          Sign In With Github
+          <Button fullWidth variant="outlined" startIcon={<BsGithub className="w-8 h-8 text-[#232323]" />} sx={{ textTransform: "none", color: "#252525", borderColor: "#E6E6E6", padding: "12px 16px", fontSize: { md: "14px", sm: '12px', xs: '16px' }, "&:hover": { borderColor: "#252525", backgroundColor: "transparent", scale: "1.04" } }} disableElevation={true} disableFocusRipple={true}>
+            Sign In With Github
           </Button>
         </Stack>
 
@@ -54,34 +53,34 @@ const Login = () => {
         </Stack>
 
         {/* Manual Login Form */}
-        <FormControl sx={{width:"100%" , rowGap:"1.6rem"}}>
+        <FormControl sx={{ width: "100%", rowGap: "1.6rem" }}>
           {/* Email and Passoword */}
           <Stack width={'100%'} direction={'column'} spacing={"1.6rem"}>
-            <TextField fullWidth id="login_email" name="login_email" label="Email Address" variant="outlined" placeholder="Eg : johndoe123@gmail.com" color="secondary"/>
-          
+            <TextField fullWidth id="login_email" name="login_email" label="Email Address" variant="outlined" placeholder="Eg : johndoe123@gmail.com" color="secondary" />
+
             <Stack spacing={'0.2rem'}>
-              <TextField fullWidth id="login_password" name="login_password" type={typedIn} label="Password" variant="outlined" placeholder="Password" color="secondary" 
-              InputProps={{
-              endAdornment: (
-              <InputAdornment position="end">
-                  {typedIn === "password" ? (
-                  <VisibilityOffIcon
-                      sx={{ cursor: "Pointer" }}
-                      onClick={() => {
-                      setTypedIn("text");
-                      }}
-                  />
-                  ) : (
-                  <VisibilityIcon
-                      sx={{ cursor: "Pointer" }}
-                      onClick={() => {
-                      setTypedIn("password");
-                      }}
-                  />
-                  )}
-              </InputAdornment>
-              )
-              }}/>
+              <TextField fullWidth id="login_password" name="login_password" type={typedIn} label="Password" variant="outlined" placeholder="Password" color="secondary"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {typedIn === "password" ? (
+                        <VisibilityOffIcon
+                          sx={{ cursor: "Pointer" }}
+                          onClick={() => {
+                            setTypedIn("text");
+                          }}
+                        />
+                      ) : (
+                        <VisibilityIcon
+                          sx={{ cursor: "Pointer" }}
+                          onClick={() => {
+                            setTypedIn("password");
+                          }}
+                        />
+                      )}
+                    </InputAdornment>
+                  )
+                }} />
               <span className='text-xs text-right'>Forgot Password ? <a href="/" className='text-sm underline text-[#C85CFA]'>Click here</a></span>
             </Stack>
 
@@ -93,8 +92,8 @@ const Login = () => {
 
       </div>
 
-      <Banner/>
-      
+      <Banner />
+
     </div>
   )
 }

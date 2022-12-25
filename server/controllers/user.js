@@ -1,15 +1,13 @@
 import user from "../models/user.js";
 import bcrypt from "bcryptjs";
 export const register = async (req, res) => {
-  const { firstname, lastname, username, email, password, confirmpassword } =
-    req.body;
+  const { firstname, lastname, email, password } = req.body;
   try {
     const existingUser = await user.findOne({ email });
     if (existingUser)
-      return res.status(400).json({ message: "User already Exits" });
-    if (password != confirmpassword)
-      res.status(200).json({ message: "password dont match" });
+      return res.status(400).json({ error: "User already Exits" });
     const fullname = firstname + " " + lastname;
+    const username = fullname.replace(" ", "-").toLowerCase();
     const newuser = new user({ email, password, fullname: fullname, username });
     await newuser.save();
     res.json({ message: "success" });
@@ -27,9 +25,9 @@ export const login = async (req, res) => {
       res.status(400).json({ message: "Invalid Credentials" });
 
     const token = await valid.generateAuthToken();
-    res.cookie("userToken", token, {
-      expires: new Date(Date.now() + 9000000),
-    });
+    // res.cookie("userToken", token, {
+    //   expires: new Date(Date.now() + 9000000),
+    // });
     await valid.save();
     res.status(200).json({ result: valid, token: token, status: 200 });
   } catch (error) {
