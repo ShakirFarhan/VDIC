@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useContext } from 'react'
+=======
+import React , {useContext , useState} from 'react'
+>>>>>>> 8f4b1a45b7894c0ae60ad2b8929a07fe861cc4b4
 import Banner from "../Components/Banner";
 
 import { Button, Stack, TextField, InputAdornment, FormControl } from "@mui/material";
@@ -20,6 +24,7 @@ const defaultData = {
 }
 const Registration = () => {
     const context = useContext(Context);
+<<<<<<< HEAD
     const { typedIn, setTypedIn } = context;
     const [formData, setFormData] = useState(defaultData)
     const handleOnChange = (e) => {
@@ -31,6 +36,14 @@ const Registration = () => {
         // console.log(res)
     }
     React.useEffect(() => {
+=======
+
+    const {typedIn , setTypedIn} = context;
+
+    const [inpassword,setInPassword] = useState('');
+
+    React.useEffect(()=>{
+>>>>>>> 8f4b1a45b7894c0ae60ad2b8929a07fe861cc4b4
         document.title = 'e-DAM | Registration';
     }, [])
 
@@ -49,6 +62,7 @@ const Registration = () => {
                     </span>
                 </Stack>
 
+<<<<<<< HEAD
                 {/* Sign Up With Google and Twitter */}
                 <Stack width={'100%'} direction={{ xs: "column", sm: "row" }} spacing={{ xs: 2, sm: 4 }}>
                     <Button fullWidth variant="outlined" startIcon={<FcGoogle className="w-8 h-8" />} sx={{ textTransform: "none", color: "#252525", borderColor: "#E6E6E6", padding: "12px 16px", fontSize: { md: "14px", sm: '12px', xs: '16px' }, "&:hover": { borderColor: "#252525", backgroundColor: 'transparent', scale: "1.04" } }} disableElevation={true} disableFocusRipple={true}>
@@ -58,6 +72,38 @@ const Registration = () => {
                     <Button fullWidth variant="outlined" startIcon={<BsGithub className="w-8 h-8 text-[#232323]" />} sx={{ textTransform: "none", color: "#252525", borderColor: "#E6E6E6", padding: "12px 16px", fontSize: { md: "14px", sm: '12px', xs: '16px' }, "&:hover": { borderColor: "#252525", backgroundColor: "transparent", scale: "1.04" } }} disableElevation={true} disableFocusRipple={true}>
                         Sign In With Github
                     </Button>
+=======
+                {/* Email and Passoword */}
+                <Stack width={'100%'} direction={'column'} spacing={"1.6rem"}>
+
+                    <TextField fullWidth id="register_email" name='register_email' label="Email Address" variant="outlined" placeholder="Eg : johndoe123@gmail.com" color="secondary"/>
+
+                    <TextField fullWidth id="register_password" name='register_password' type={typedIn} label="Password" variant="outlined" placeholder="Password" value={inpassword} onChange={(e)=>setInPassword(e.target.value)} color='secondary' helperText="Must have 8 characters including symbols (Eg : A76@cd9hd)"
+                    InputProps={{
+                    endAdornment: (
+                    <InputAdornment position="end">
+                        {typedIn === "password" ? (
+                        <VisibilityOffIcon
+                            sx={{ cursor: "Pointer" }}
+                            onClick={() => {
+                            setTypedIn("text");
+                            }}
+                        />
+                        ) : (
+                        <VisibilityIcon
+                            sx={{ cursor: "Pointer" }}
+                            onClick={() => {
+                            setTypedIn("password");
+                            }}
+                        />
+                        )}
+                    </InputAdornment>
+                    )
+                    }}/>
+
+                    {/* Register Button */}
+                    <Button variant="contained" fullWidth sx={{ backgroundColor: "#C85CFA", padding: "10px", fontSize: "20px", "&:hover": { backgroundColor: "#b453e1" }, textTransform: "none"}}>Get Started</Button>
+>>>>>>> 8f4b1a45b7894c0ae60ad2b8929a07fe861cc4b4
                 </Stack>
 
                 {/* OR Seperator */}
